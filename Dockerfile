@@ -1,5 +1,5 @@
 FROM gabrieladt/oracle-jre7
-
+ 
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
@@ -24,6 +24,8 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
 ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.63
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+
+RUN apt-get -y install curl wget vim
 
 RUN set -x \
 	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
