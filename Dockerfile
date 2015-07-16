@@ -34,7 +34,9 @@ RUN set -x \
 	&& gpg --verify tomcat.tar.gz.asc \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
 	&& rm bin/*.bat \
-	&& rm tomcat.tar.gz*
+	&& rm tomcat.tar.gz* 
+
+RUN rm -rf webapps/*
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
