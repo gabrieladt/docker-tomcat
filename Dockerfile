@@ -39,4 +39,4 @@ RUN set -x \
 RUN rm -rf webapps/*
 
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["CATALINA_OPTS=-Xmx2048M -Xms128M -XX:PermSize=512m","catalina.sh", "run"]
