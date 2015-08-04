@@ -30,7 +30,6 @@ RUN apt-get -y install curl wget vim
 
 RUN set -x \
 	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
-	&& curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
 	&& gpg --verify tomcat.tar.gz.asc \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
 	&& rm bin/*.bat \
@@ -39,5 +38,5 @@ RUN set -x \
 RUN rm -rf webapps/*
 
 EXPOSE 8080
-ENV CATALINA_OPTS='-Xmx2048M -Xms128M -XX:PermSize=512m'
+ENV CATALINA_OPTS='-Xmx3000M -Xms128M -XX:PermSize=512m'
 CMD ["catalina.sh", "run"]
