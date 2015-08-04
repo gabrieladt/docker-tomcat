@@ -30,7 +30,6 @@ RUN apt-get -y install curl wget vim
 
 RUN set -x \
 	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
-	&& gpg --verify tomcat.tar.gz.asc \
 	&& tar -xvf tomcat.tar.gz --strip-components=1 \
 	&& rm bin/*.bat \
 	&& rm tomcat.tar.gz* 
